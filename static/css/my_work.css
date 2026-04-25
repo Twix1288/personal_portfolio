@@ -1,0 +1,373 @@
+/* ============================================================
+   MY WORK — Scrollytelling + 3D studio layer
+   Extends blueprint theme (uses same CSS variables)
+   ============================================================ */
+
+.page-my-work {
+    position: relative;
+}
+
+/* ---- Hero: WebGL backdrop + narrative ---- */
+.mw-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 24px 72px;
+    overflow: hidden;
+}
+
+#mw-webgl {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 1;
+    pointer-events: none;
+    display: block;
+}
+
+/* Keep text readable without painting over the WebGL with a solid sheet */
+.mw-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 22, 40, 0.2) 0%,
+        rgba(10, 22, 40, 0.35) 50%,
+        rgba(10, 22, 40, 0.55) 100%
+    );
+    pointer-events: none;
+}
+
+.mw-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.mw-hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    color: var(--bp-accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.mw-hero-title {
+    font-family: var(--font-mono);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--bp-text-bright);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
+}
+
+.mw-hero-lede {
+    max-width: 560px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--bp-text-primary);
+    margin-bottom: 28px;
+}
+
+.mw-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 32px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--bp-text-dim);
+    border-top: 1px solid var(--bp-line);
+    padding-top: 20px;
+}
+
+.mw-hero-meta span strong {
+    color: var(--bp-accent);
+    font-weight: 600;
+}
+
+/* Scroll progress (cinematic rail) */
+.mw-scroll-rail {
+    position: fixed;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .mw-scroll-rail { display: none; }
+}
+
+.mw-scroll-rail-track {
+    width: 2px;
+    height: 120px;
+    background: var(--bp-line);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mw-scroll-rail-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--bp-accent), var(--bp-line-bright));
+    box-shadow: 0 0 12px var(--bp-accent-glow);
+    transition: height 0.05s linear;
+}
+
+.mw-scroll-rail-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--bp-text-dim);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+/* Sticky chapter nav */
+.mw-chapter-wrap {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+}
+
+.mw-chapter-nav {
+    position: sticky;
+    top: 88px;
+    z-index: 50;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.94) 60%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--bp-grid-major);
+}
+
+.mw-chapter-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bp-text-dim);
+    padding: 8px 14px;
+    border: 1px solid var(--bp-line);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mw-chapter-nav a:hover,
+.mw-chapter-nav a.is-active {
+    color: var(--bp-text-bright);
+    border-color: var(--bp-accent);
+    box-shadow: 0 0 18px var(--bp-accent-glow);
+}
+
+/* Parallax depth layers */
+.mw-depth {
+    will-change: transform;
+}
+
+/* Project “scenes” — 3D tilt + scrollytelling */
+.mw-project-scene {
+    position: relative;
+    margin-bottom: clamp(48px, 8vw, 96px);
+    perspective: 1400px;
+}
+
+.mw-project-scene:last-child {
+    margin-bottom: 0;
+}
+
+.mw-project-stage {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s var(--ease-out-expo);
+}
+
+.mw-project-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .mw-project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mw-project-visual {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--bp-line);
+    background: rgba(13, 31, 60, 0.45);
+    overflow: hidden;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(0, 212, 255, 0.06);
+}
+
+.mw-project-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+        repeating-linear-gradient(
+            -12deg,
+            transparent,
+            transparent 18px,
+            rgba(26, 58, 92, 0.12) 18px,
+            rgba(26, 58, 92, 0.12) 19px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mw-project-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.8s var(--ease-out-expo);
+}
+
+.mw-project-scene:hover .mw-project-visual img {
+    transform: scale(1.06);
+}
+
+.mw-project-index {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--bp-accent);
+    padding: 6px 10px;
+    border: 1px solid var(--bp-line-bright);
+    background: rgba(10, 22, 40, 0.75);
+    backdrop-filter: blur(6px);
+}
+
+.mw-project-body .bp-section-label {
+    margin-bottom: 6px;
+}
+
+.mw-project-title {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--bp-text-bright);
+    margin: 0 0 16px;
+}
+
+.mw-project-desc {
+    color: var(--bp-text-primary);
+    line-height: 1.75;
+    margin-bottom: 22px;
+    font-size: 0.98rem;
+}
+
+.mw-project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Certificates — horizontal “ribbon” */
+.mw-cert-section {
+    padding-bottom: 100px;
+}
+
+.mw-cert-rail {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 8px 4px 24px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.mw-cert-rail::-webkit-scrollbar {
+    height: 4px;
+}
+
+.mw-cert-rail::-webkit-scrollbar-thumb {
+    background: var(--bp-line-bright);
+    border-radius: 2px;
+}
+
+.mw-cert-card {
+    flex: 0 0 min(320px, 85vw);
+    scroll-snap-align: start;
+    background: rgba(13, 31, 60, 0.5);
+    border: 1px solid var(--bp-line);
+    padding: 28px 24px;
+    position: relative;
+    transition: border-color 0.35s ease, transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+}
+
+.mw-cert-card:hover {
+    border-color: var(--bp-accent);
+    transform: translateY(-6px) rotateX(4deg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px var(--bp-accent-glow);
+}
+
+.mw-cert-card h3 {
+    font-size: 1.05rem;
+    margin: 0 0 12px;
+}
+
+.mw-cert-card p {
+    font-size: 0.9rem;
+    color: var(--bp-text-primary);
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+.mw-empty {
+    border: 1px dashed var(--bp-line-bright);
+    padding: 40px 28px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--bp-text-dim);
+    background: rgba(13, 31, 60, 0.25);
+}
+
+/* Cinematic vignette on scroll (subtle) */
+.mw-vignette-pulse {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(10, 22, 40, 0.5) 100%);
+    transition: opacity 0.3s ease;
+}

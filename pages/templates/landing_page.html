@@ -1,19 +1,173 @@
 {% extends "base_template.html" %}
 
 {% block page_content %}
-<div class="row align-items-center min-vh-100 pb-5">
-    <div class="col-md-8 mx-auto text-center">
-        <h1 class="display-3 fw-bold mb-4">Hi, I'm Rishit Agnihotri</h1>
-        <p class="lead text-secondary mb-5">
-            I am a passionate software developer dedicated to crafting modern, functional, and beautiful web
-            applications.
-            Welcome to my personal portfolio where I share my work, my background, and my learning journey.
-        </p>
-        <div>
-            <!-- Links to be wired with actual urls or views later if needed -->
-            <a href="/about_me/" class="btn btn-secondary btn-lg px-4 me-3">About Me</a>
-            <a href="/resume/" class="btn btn-primary btn-lg px-4">View Resume</a>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="bp-hero" id="hero">
+    <!-- Decorative construction lines -->
+    <svg class="hero-lines" aria-hidden="true">
+        <line class="h-line draw-line" x1="0" y1="30%" x2="100%" y2="30%" />
+        <line class="h-line draw-line" x1="0" y1="70%" x2="100%" y2="70%" />
+        <line class="v-line draw-line" x1="15%" y1="0" x2="15%" y2="100%" />
+        <line class="v-line draw-line" x1="85%" y1="0" x2="85%" y2="100%" />
+        <!-- Cross markers -->
+        <line class="h-line" x1="14%" y1="30%" x2="16%" y2="30%" style="stroke-width: 1.5; opacity: 0.5;" />
+        <line class="v-line" x1="15%" y1="29%" x2="15%" y2="31%" style="stroke-width: 1.5; opacity: 0.5;" />
+        <line class="h-line" x1="84%" y1="70%" x2="86%" y2="70%" style="stroke-width: 1.5; opacity: 0.5;" />
+        <line class="v-line" x1="85%" y1="69%" x2="85%" y2="71%" style="stroke-width: 1.5; opacity: 0.5;" />
+    </svg>
+
+    <div class="scroll-reveal">
+        <div class="bp-hero-label">
+            PORTFOLIO — REV 01
         </div>
     </div>
+
+    <h1 class="bp-hero-name scroll-reveal reveal-delay-1">
+        Rishit <span class="name-accent">Agnihotri</span>
+    </h1>
+
+    <p class="bp-hero-tagline scroll-reveal reveal-delay-2">
+        A <span class="hl">software engineer</span> dedicated to crafting modern,
+        functional, and robust systems. Building with <span class="hl">precision</span>
+        and <span class="hl">purpose</span>.
+    </p>
+
+    <div class="bp-hero-cta scroll-reveal reveal-delay-3">
+        <a href="/about/" class="bp-btn">
+            <i class="bi bi-person-lines-fill"></i>
+            About Me
+        </a>
+        <a href="/projects/" class="bp-btn">
+            <i class="bi bi-grid-1x2"></i>
+            My Work
+        </a>
+        <a href="/resume/" class="bp-btn bp-btn-primary">
+            <i class="bi bi-file-earmark-text"></i>
+            View Resume
+        </a>
+    </div>
+
+    <!-- Scroll prompt -->
+    <div class="scroll-indicator scroll-reveal reveal-delay-5">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+    </div>
+</section>
+
+
+<!-- ========== DIMENSION LINE DIVIDER ========== -->
+<div class="bp-content-wrapper">
+    <div class="dimension-line scroll-reveal">
+        <div class="line"></div>
+        <span class="measurement">SEC. 01 — SPECIFICATIONS</span>
+        <div class="line"></div>
+    </div>
 </div>
+
+
+<!-- ========== SPECIFICATION PANEL ========== -->
+<section class="bp-content-wrapper mb-section" id="specs">
+    <div class="row">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="scroll-reveal">
+                <div class="bp-section-label">
+                    <span class="label-number">01</span> Overview
+                </div>
+                <h2 class="bp-section-title">Technical<br>Specifications</h2>
+            </div>
+            <div class="tech-callout scroll-reveal reveal-delay-2">
+                <span class="tech-callout-label">Note</span>
+                <p>Core competencies and technologies used across projects, research, and professional work.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="spec-panel scroll-reveal reveal-delay-1">
+                <div class="spec-panel-header">Parts List — Core Stack</div>
+                <div class="spec-row">
+                    <span class="spec-dot"></span>
+                    <span class="spec-key">Languages</span>
+                    <span class="spec-value">Python, JavaScript, C, Rust, Java</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-dot"></span>
+                    <span class="spec-key">Frameworks</span>
+                    <span class="spec-value">Django, React, Node.js, Next.js</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-dot"></span>
+                    <span class="spec-key">Systems</span>
+                    <span class="spec-value">Linux, Docker, AWS, CI/CD Pipelines</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-dot"></span>
+                    <span class="spec-key">Databases</span>
+                    <span class="spec-value">PostgreSQL, SQLite, MongoDB, Redis</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-dot"></span>
+                    <span class="spec-key">Focus Areas</span>
+                    <span class="spec-value">Systems Programming, Web Development, Security, AI/ML</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== DIMENSION LINE DIVIDER ========== -->
+<div class="bp-content-wrapper">
+    <div class="dimension-line scroll-reveal">
+        <div class="line"></div>
+        <span class="measurement">SEC. 02 — NAVIGATION</span>
+        <div class="line"></div>
+    </div>
+</div>
+
+
+<!-- ========== QUICK NAVIGATION CARDS ========== -->
+<section class="bp-content-wrapper mb-section" id="nav-cards">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <a href="/about/" class="text-decoration-none">
+                <div class="bp-card scroll-reveal-left reveal-delay-1" style="height: 100%;">
+                    <div class="bp-section-label" style="margin-bottom: 16px;">
+                        <span class="label-number">02</span> Section
+                    </div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 12px;">About Me</h3>
+                    <p class="text-dim" style="font-size: 0.9rem; margin: 0;">
+                        Background, interests, and the engineer behind the code.
+                        A detailed view into my journey and philosophy.
+                    </p>
+                    <div style="margin-top: 20px;">
+                        <span class="text-accent text-mono" style="font-size: 0.75rem; letter-spacing: 0.1em;">
+                            VIEW DETAIL →
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="/resume/" class="text-decoration-none">
+                <div class="bp-card scroll-reveal-right reveal-delay-2" style="height: 100%;">
+                    <div class="bp-section-label" style="margin-bottom: 16px;">
+                        <span class="label-number">03</span> Section
+                    </div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Resume</h3>
+                    <p class="text-dim" style="font-size: 0.9rem; margin: 0;">
+                        Professional experience, education, and credentials.
+                        View and download the complete document.
+                    </p>
+                    <div style="margin-top: 20px;">
+                        <span class="text-accent text-mono" style="font-size: 0.75rem; letter-spacing: 0.1em;">
+                            VIEW DOCUMENT →
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
 {% endblock page_content %}

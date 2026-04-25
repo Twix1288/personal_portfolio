@@ -1,0 +1,50 @@
+# Python / Django
+*.py[cod]
+*$py.class
+*.pyc
+*~
+__pycache__/
+
+# Environments
+.gitignore
+.env
+.venv/
+venv/
+env/
+ENV/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Static collected files and user uploaded media
+staticfiles/
+media/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Django stuff
+*.log
+local_settings.py

@@ -1,28 +1,89 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}Rishit Agnihotri: Portfolio{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Rishit Agnihotri — Software Engineer. Systems thinker, builder, and architect of robust software.">
+    <meta name="author" content="Rishit Agnihotri">
+    <title>{% block title %}Rishit Agnihotri — Portfolio{% endblock title %}</title>
+
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Blueprint Theme -->
+    <link href="{% static 'css/blueprint.css' %}" rel="stylesheet">
+
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 
-<body class="container">
+<body>
+
+    <!-- ========== NAVIGATION — Title Block ========== -->
+    <nav class="bp-nav" id="main-nav">
+        <div class="bp-nav-inner">
+            <a href="/" class="bp-nav-brand">
+                <span class="brand-bracket">[</span>
+                R.AGNIHOTRI
+                <span class="brand-bracket">]</span>
+            </a>
+            <button class="bp-nav-toggle" id="nav-toggle" aria-label="Toggle navigation">[MENU]</button>
+            <ul class="bp-nav-links" id="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/projects/">My Work</a></li>
+                <li><a href="/resume/">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== PAGE CONTENT ========== -->
     {% block page_content %}{% endblock page_content %}
 
-    <footer class="mt-5 py-5 border-top">
-        <div class="row text-center">
-            <div class="col-12">
-                <h5 class="mb-3 text-uppercase fw-bold text-muted">Contact Me</h5>
-                <p class="text-secondary">Feel free to reach out for collaborations or just a friendly hello!</p>
-                <a href="mailto:rishit.agnihotri@example.com" class="btn btn-outline-primary px-4 py-2 mt-2">Get In Touch</a>
-                <div class="mt-4">
-                    <a href="#" class="text-decoration-none me-3 text-secondary">LinkedIn</a>
-                    <a href="#" class="text-decoration-none text-secondary">GitHub</a>
+    <!-- ========== FOOTER — Revision Block ========== -->
+    <footer class="bp-footer">
+        <div class="bp-footer-inner">
+            <div class="bp-footer-contact scroll-reveal">
+                <h5>Contact — Establish Connection</h5>
+                <p class="text-dim">Feel free to reach out for collaborations or just a friendly hello.</p>
+                <a href="mailto:rishitagni@gmail.com" class="bp-btn bp-btn-primary">
+                    <i class="bi bi-envelope"></i>
+                    Get In Touch
+                </a>
+            </div>
+
+            <div class="revision-block scroll-reveal reveal-delay-2">
+                <div class="rev-cell">
+                    <span class="rev-label">Document</span>
+                    <span class="rev-value">Portfolio v1.0</span>
+                </div>
+                <div class="rev-cell">
+                    <span class="rev-label">Links</span>
+                    <span class="rev-value">
+                        <a href="https://www.linkedin.com/in/rishit-agnihotri-b3096b152/" target="_blank" rel="noopener noreferrer" style="margin-right: 12px;"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/Twix1288" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a>
+                    </span>
+                </div>
+                <div class="rev-cell">
+                    <span class="rev-label">Status</span>
+                    <span class="rev-value"><span class="status-dot active"></span>Available</span>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- ========== CURSOR TRACKER ========== -->
+    <div class="cursor-tracker" id="cursor-tracker">X: 0  Y: 0</div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Blueprint Engine -->
+    <script src="{% static 'js/blueprint.js' %}"></script>
+
+    {% block extra_js %}{% endblock extra_js %}
+
 </body>
 
 </html>

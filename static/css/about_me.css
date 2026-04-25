@@ -1,0 +1,44 @@
+.profile-photo-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-photo-frame {
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--accent-color-dim);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.15); /* Assuming blue accent from blueprint theme */
+}
+
+/* Add some blueprint decorative elements around it */
+.profile-photo-container::before {
+    content: "PHOTO_REF: 01";
+    position: absolute;
+    top: -10px;
+    right: 20%;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+}
+
+@media (max-width: 991px) {
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+    }
+}

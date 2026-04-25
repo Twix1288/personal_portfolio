@@ -1,36 +1,165 @@
 {% extends "base_template.html" %}
+{% load static %}
 
-{% block title %}About Me - Rishit Agnihotri{% endblock %}
+{% block title %}About Me — Rishit Agnihotri{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about_me.css' %}">
+{% endblock %}
 
 {% block page_content %}
-<div class="my-5 pt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <h1 class="mb-4 fw-bold">About Me</h1>
-            <p class="fs-5 text-secondary">
-                Hello! I'm Rishit, a dedicated software engineer with a knack for building robust and scalable applications. 
-                My focus relies on finding effective solutions to complex problems and writing clean, maintainable code.
-            </p>
-            <p class="fs-5 text-secondary">
-                In my free time, I love to explore new frameworks, contribute to open-source projects, and share my knowledge 
-                with the developer community. I am constantly learning and adapting to the fast-paced tech world.
-            </p>
-            <p class="fs-5 text-secondary">
-                My core values as an engineer include high quality standards, iterative delivery, and putting the user experience first.
-            </p>
+
+<section class="bp-page-section">
+    <div class="bp-content-wrapper">
+
+        <!-- ========== SECTION HEADER ========== -->
+        <div class="scroll-reveal" style="margin-bottom: 48px;">
+            <div class="bp-section-label">
+                <span class="label-number">02</span> Section — About
+            </div>
+            <h1 class="bp-section-title">About Me</h1>
         </div>
-        <div class="col-md-4 mt-4 mt-md-0 d-flex flex-column justify-content-center">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4 bg-light rounded">
-                    <h5 class="card-title fw-bold mb-3">Quick Facts</h5>
-                    <ul class="list-unstyled mb-0 text-secondary">
-                        <li class="mb-2">📍 <strong>Location:</strong> San Francisco, CA</li>
-                        <li class="mb-2">💻 <strong>Interests:</strong> Web Dev, AI/ML, System Design</li>
-                        <li class="mb-0">🎓 <strong>Education:</strong> B.S. in Computer Science</li>
-                    </ul>
+
+
+        <!-- ========== BIO — Detail View ========== -->
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="detail-view scroll-reveal reveal-delay-1" style="margin-bottom: 32px;">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    <span class="scale-label">Scale: 1:1</span>
+
+                    <p>
+                        Hello! I'm <strong class="text-bright">Rishit</strong>, a dedicated software engineer with a
+                        knack for building robust and scalable applications. I've always been driven by a passion for 
+                        <strong class="text-accent">solving puzzles</strong>—whether they are logical challenges in 
+                        architecture or the technical intricacies of complex systems.
+                    </p>
+                    <p>
+                        Beyond the screen, I find inspiration in <strong class="text-accent">exploring new places</strong> 
+                        and gaining fresh perspectives. I am currently focused on immersing myself in <strong class="text-bright">research and high-impact internships</strong>, 
+                        aiming to gain the technical "upper hand" through rigorous experience and industry insight.
+                    </p>
+                    <p>
+                        My ultimate goal is to leverage this depth to one day <strong class="text-bright">build and scale my own product</strong> 
+                        from the ground up. I believe in high quality standards, iterative delivery, and putting the user experience first.
+                    </p>
+                </div>
+
+                <!-- Tech callout moved here to fill space -->
+                <div class="tech-callout scroll-reveal reveal-delay-3">
+                    <span class="tech-callout-label">Interests</span>
+                    <p>
+                        Beyond code — hiking, reading technical papers, contributing to OSS, 
+                        and exploring the intersection of systems design and user experience.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- ========== QUICK FACTS — Bill of Materials ========== -->
+            <div class="col-lg-4">
+                <div class="profile-photo-container scroll-reveal reveal-delay-2">
+                    <div class="profile-photo-frame">
+                        <img src="{% static 'images/me.png' %}" alt="Rishit Agnihotri" class="profile-photo">
+                    </div>
+                </div>
+
+                <div class="scroll-reveal reveal-delay-2">
+                    <div class="spec-panel">
+                        <div class="spec-panel-header">Bill of Materials — Profile</div>
+                        <table class="bom-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;">#</th>
+                                    <th>Item</th>
+                                    <th>Specification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="item-no">01</td>
+                                    <td class="text-bright">Location</td>
+                                    <td>San Francisco, CA</td>
+                                </tr>
+                                <tr>
+                                    <td class="item-no">02</td>
+                                    <td class="text-bright">Focus</td>
+                                    <td>Web Dev, Systems, Security</td>
+                                </tr>
+                                <tr>
+                                    <td class="item-no">03</td>
+                                    <td class="text-bright">Education</td>
+                                    <td>B.S. Computer Science</td>
+                                </tr>
+                                <tr>
+                                    <td class="item-no">04</td>
+                                    <td class="text-bright">Status</td>
+                                    <td><span class="status-dot active"></span>Seeking Internships</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- ========== DIMENSION LINE ========== -->
+        <div class="dimension-line scroll-reveal">
+            <div class="line"></div>
+            <span class="measurement">END — SECTION 02</span>
+            <div class="line"></div>
+        </div>
+
+
+        <!-- ========== VALUES / PHILOSOPHY ========== -->
+        <div class="scroll-reveal" style="margin-bottom: 32px;">
+            <div class="bp-section-label">
+                <span class="label-number">02.1</span> Sub-Section — Philosophy
+            </div>
+            <h2 class="bp-section-title" style="font-size: 1.6rem;">Engineering Philosophy</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="bp-card scroll-reveal reveal-delay-1" style="height: 100%;">
+                    <h4 style="font-size: 1rem; margin-bottom: 12px;">
+                        <i class="bi bi-rulers text-accent" style="margin-right: 8px;"></i>
+                        Precision
+                    </h4>
+                    <p class="text-dim" style="font-size: 0.88rem; margin: 0; line-height: 1.7;">
+                        Every line of code has intent. I believe in measured, deliberate engineering over quick hacks.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bp-card scroll-reveal reveal-delay-2" style="height: 100%;">
+                    <h4 style="font-size: 1rem; margin-bottom: 12px;">
+                        <i class="bi bi-arrow-repeat text-accent" style="margin-right: 8px;"></i>
+                        Iteration
+                    </h4>
+                    <p class="text-dim" style="font-size: 0.88rem; margin: 0; line-height: 1.7;">
+                        Ship early, learn fast. Tight feedback loops and incremental improvements drive better outcomes.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bp-card scroll-reveal reveal-delay-3" style="height: 100%;">
+                    <h4 style="font-size: 1rem; margin-bottom: 12px;">
+                        <i class="bi bi-layers text-accent" style="margin-right: 8px;"></i>
+                        Depth
+                    </h4>
+                    <p class="text-dim" style="font-size: 0.88rem; margin: 0; line-height: 1.7;">
+                        Understanding systems at every layer — from the user interface down to the kernel — produces stronger solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
+</section>
+
 {% endblock page_content %}

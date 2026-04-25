@@ -1,0 +1,168 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block title %}My Work — Rishit Agnihotri{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/my_work.css' %}">
+{% endblock extra_css %}
+
+{% block page_content %}
+<div class="page-my-work">
+
+    <div class="mw-scroll-rail" aria-hidden="true">
+        <span class="mw-scroll-rail-label">SCROLL</span>
+        <div class="mw-scroll-rail-track">
+            <div class="mw-scroll-rail-fill"></div>
+        </div>
+    </div>
+
+    <div class="mw-vignette-pulse" aria-hidden="true"></div>
+
+    <!-- ========== Hero + WebGL studio ========== -->
+    <section class="mw-hero" id="mw-hero">
+        <canvas id="mw-webgl" aria-hidden="true"></canvas>
+        <div class="mw-hero-inner">
+            <div class="mw-depth" data-speed="0.08">
+                <p class="mw-hero-kicker scroll-reveal">Sheet — Build Log</p>
+                <h1 class="mw-hero-title scroll-reveal reveal-delay-1">Immersive<br><span class="name-accent">Build</span> Gallery</h1>
+                <p class="mw-hero-lede scroll-reveal reveal-delay-2">
+                    A scroll-driven walkthrough of shipped work and credentials — depth from real-time rendering,
+                    motion from narrative pacing, and the same blueprint discipline as the rest of this site.
+                </p>
+                <div class="mw-hero-meta scroll-reveal reveal-delay-3">
+                    <span><strong>Mode</strong> — GPU + scroll choreography</span>
+                    <span><strong>Focus</strong> — Systems, interfaces, proof</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bp-content-wrapper mw-chapter-wrap">
+        <nav class="mw-chapter-nav scroll-reveal" aria-label="On this page">
+            <a href="#mw-projects">Projects</a>
+            <a href="#mw-certificates">Certificates</a>
+        </nav>
+
+        <div class="dimension-line scroll-reveal">
+            <div class="line"></div>
+            <span class="measurement">SEC. 02 — DEPLOYED ARTIFACTS</span>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <!-- ========== Projects — scrollytelling scenes ========== -->
+    <section class="bp-content-wrapper mb-section" id="mw-projects" data-mw-chapter>
+        <div class="row align-items-end mb-5">
+            <div class="col-lg-7">
+                <div class="scroll-reveal">
+                    <div class="bp-section-label">
+                        <span class="label-number">02</span> Projects
+                    </div>
+                    <h2 class="bp-section-title">Three-dimensional<br>presentation plane</h2>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="tech-callout scroll-reveal reveal-delay-2">
+                    <span class="tech-callout-label">Scrollytelling</span>
+                    <p>Each artifact is a scene: parallax depth, hover magnification, and a live perspective tilt tied to cursor and scroll position — WebGL grounds the environment while the grid stays unmistakably blueprint.</p>
+                </div>
+            </div>
+        </div>
+
+        {% if projects %}
+            {% for project in projects %}
+            <article class="mw-project-scene scroll-reveal{% if forloop.counter|divisibleby:2 %} reveal-delay-1{% endif %}" id="project-{{ forloop.counter }}">
+                <div class="mw-project-stage">
+                    <div class="mw-project-grid">
+                        <div class="mw-project-visual">
+                            <span class="mw-project-index">FIG. {{ forloop.counter|stringformat:"02d" }}</span>
+                            {% if project.image %}
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                            {% else %}
+                                <div class="d-flex align-items-center justify-content-center h-100 text-dim" style="min-height: 200px; font-family: var(--font-mono); font-size: 0.75rem;">
+                                    No image — add in admin
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="mw-project-body">
+                            <div class="bp-section-label">
+                                <span class="label-number">{{ forloop.counter|stringformat:"02d" }}</span> Deliverable
+                            </div>
+                            <h3 class="mw-project-title">{{ project.title }}</h3>
+                            <p class="mw-project-desc">{{ project.description }}</p>
+                            <div class="mw-project-actions">
+                                {% if project.url %}
+                                <a href="{{ project.url }}" class="bp-btn bp-btn-primary" target="_blank" rel="noopener noreferrer">
+                                    <i class="bi bi-box-arrow-up-right"></i> Open build
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        {% else %}
+            <div class="mw-empty scroll-reveal">
+                No projects yet — add entries in Django admin to populate this runway.
+            </div>
+        {% endif %}
+    </section>
+
+    <div class="bp-content-wrapper">
+        <div class="dimension-line scroll-reveal">
+            <div class="line"></div>
+            <span class="measurement">SEC. 03 — VERIFICATION &amp; CREDENTIALS</span>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <!-- ========== Certificates ========== -->
+    <section class="bp-content-wrapper mw-cert-section mb-section" id="mw-certificates" data-mw-chapter>
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="scroll-reveal">
+                    <div class="bp-section-label">
+                        <span class="label-number">03</span> Certificates
+                    </div>
+                    <h2 class="bp-section-title">Credentials<br>as physical media</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <p class="text-dim scroll-reveal reveal-delay-1" style="font-size: 0.95rem; line-height: 1.7;">
+                    Horizontal discovery with snap points — skim fast, stop on what matters, open the source link when you need the receipt.
+                </p>
+            </div>
+        </div>
+
+        {% if certificates %}
+        <div class="mw-cert-rail scroll-reveal reveal-delay-1">
+            {% for certificate in certificates %}
+            <article class="mw-cert-card">
+                <div class="bp-section-label" style="margin-bottom: 10px;">
+                    <span class="label-number">{{ forloop.counter|stringformat:"02d" }}</span> Record
+                </div>
+                <h3>{{ certificate.title }}</h3>
+                <p>{{ certificate.description }}</p>
+                {% if certificate.url %}
+                <a href="{{ certificate.url }}" class="bp-btn bp-btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-patch-check"></i> Verify
+                </a>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="mw-empty scroll-reveal">
+            No certificates yet — add entries in Django admin to extend this rail.
+        </div>
+        {% endif %}
+    </section>
+
+</div>
+{% endblock page_content %}
+
+{% block extra_js %}
+<script src="{% static 'js/my_work.js' %}"></script>
+{% endblock extra_js %}
