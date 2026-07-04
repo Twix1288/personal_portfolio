@@ -32,7 +32,7 @@ db.sqlite3-journal
 
 # Static collected files and user uploaded media
 staticfiles/
-media/
+# media/
 
 # MacOS
 .DS_Store
